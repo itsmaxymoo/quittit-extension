@@ -1,2 +1,3 @@
 # quittit-extension
-A browser extension to enforce quittit
+
+A browser extension to enforce quittit!
