@@ -5,11 +5,18 @@
 	"version": "0.1",
   
 	"description": "Enforces the use of quittit!",
+	"homepage_url": "https://quittit.itsmaxymoo.com",
   
 	"icons": {
 		"32": "assets/icon-32.png",
 		"48": "assets/icon-48.png",
 		"192": "assets/icon-192.png"
+	},
+
+	"browser_action": {
+		"default_icon": "assets/icon-32.png",
+		"default_title": "quittit!",
+		"default_popup": "popup/control_panel.html"
 	},
   
 	"content_scripts": [
