@@ -2,45 +2,56 @@
 
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<meta content="width=device-width, initial-scale=1" name="viewport">
-		<link rel="stylesheet" type="text/css" href="control_panel.css">
-	</head>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	<link rel="stylesheet" type="text/css" href="control_panel.css">
+	<script type="text/javascript" src="control_panel.js"></script>
+</head>
 
-	<body>
+<body>
+	<main>
+		<div class="container is-max-mobile">
 
-		<section class="section">
-			<div class="container is-max-mobile">
+			<nav class="panel">
+				<p class="panel-heading">
+					Blocked Sites
+				</p>
+				<div class="panel-block">
+					<div class="field has-addons">
+						<div class="control">
+							<input class="input" type="text" placeholder="enter a domain" id="add-bse-input">
+						</div>
+						<div class="control">
+							<button class="button is-info" id="add-bse-button">
+								+
+							</button>
+						</div>
+					</div>
+				</div>
 
-				<header>
-					<h3 class="title is-size-3">quittit! control panel</h3>
-				</header>
-<hr />
-				<main>
-					<section class="section pt-0">
-						<h5 class="is-size-5">Blocked Sites</h5>
-						
-						<fieldset>
-							<label class="checkbox">
-								<input type="checkbox">
-								reddit
-							</label><br />
-							<label class="checkbox">
-								<input type="checkbox">
-								Twitter
-							</label><br />
-							<label class="checkbox">
-								<input type="checkbox">
-								Facebook
-							</label>
-						</fieldset>
-					</section>
-				</main>
+				<div id="blocked-site-list"></div>
+				<template id="blocked-site-entry-template">
+					<div class="panel-block" id="bse-id">
+						<span class="panel-icon">
+							<button class="delete is-small" id="bse-delete"></button>
+						</span>
+						<span id="bse-name">
+							reddit.com
+						</span>
+					</div>
+				</template>
 
-			</div>
-		</section>
+				<div class="section" id="blocked-site-list-empty-message">
+					<p class="has-text-centered is-italic">
+						no blocked sites
+					</p>
+				</div>
+			</nav>
 
-	</body>
+		</div>
+	</main>
+
+</body>
 
 </html>
