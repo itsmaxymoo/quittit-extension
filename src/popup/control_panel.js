@@ -39,13 +39,15 @@ function constructGUI(){
 		// Get template
 		let bse_template = document.querySelector("#blocked-site-entry-template");
 
-		for(bse_index in blocked_site_list){
+		for(var i = 0; i < blocked_site_list.length; i++){
 			var bsl = document.querySelector("#blocked-site-list");
 			var bse = bse_template.content.cloneNode(true);
 
-			bse.querySelector("#bse-name").innerHTML = blocked_site_list[bse_index];
+			let bse_string = blocked_site_list[i];
+
+			bse.querySelector("#bse-name").innerHTML = blocked_site_list[i];
 			bse.querySelector("#bse-delete").onclick = function(){
-				del_site(blocked_site_list[bse_index]);
+				del_site(bse_string);
 				constructGUI();
 			};
 
@@ -62,7 +64,7 @@ function constructGUI(){
 
 
 function add_site(site){
-	if( ! (site in blocked_site_list) ){
+	if( ! blocked_site_list.includes(site) ){
 		blocked_site_list.unshift(site);
 	}
 

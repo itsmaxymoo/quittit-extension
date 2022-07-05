@@ -25,7 +25,7 @@
   
 	"content_scripts": [
 	  {
-		"matches": ["*://*.reddit.com/*"],
+		"matches": ["<all_urls>"],
 		"js": ["quittit.js"]
 	  }
 	]
