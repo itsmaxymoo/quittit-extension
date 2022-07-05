@@ -3,7 +3,7 @@ var blocked_site_list = [];
 
 
 // Load blocked sites from extension storage
-function loadBlockedSiteList(){
+function loadBlockedSiteList(onload = function(){}){
 	let storage = browser.storage.local.get("blocked_site_list");
 	storage.then(function(settings){
 		bsl = settings.blocked_site_list;
@@ -11,6 +11,15 @@ function loadBlockedSiteList(){
 		if(Array.isArray(bsl)){
 			blocked_site_list = bsl;
 		}
+
+		// Also block the www. variant of domains
+		var www_variants = []
+		for(var i = 0; i < blocked_site_list.length; i++){
+			if( ! blocked_site_list[i].startsWith("www.") ){
+				www_variants.push("www." + blocked_site_list[i]);
+			}
+		}
+		blocked_site_list = blocked_site_list.concat(www_variants);
 
 		onload();
 	});
@@ -25,9 +34,10 @@ if(!browser.storage.onChanged.hasListener(loadBlockedSiteList)){
 
 // Add our event listener to catch page load
 window.onload = function(){
-	//
+	// Load blocked sites
+	loadBlockedSiteList(function(){
+		if(blocked_site_list.indexOf(location.hostname) > -1){
+			window.location = QUITTIT_URL;
+		}
+	});
 }
-
-
-// Load blocked sites
-loadBlockedSiteList();
