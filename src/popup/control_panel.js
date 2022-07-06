@@ -29,8 +29,13 @@ function load(onload = function(){}){
 
 
 function constructGUI(){
+	var bsl = document.querySelector("#blocked-site-list");
+
 	// Clear existing blocked site entries
-	document.querySelector("#blocked-site-list").innerHTML = "";
+	while(bsl.firstChild){
+		bsl.removeChild(bsl.lastChild);
+	}
+	bsl.textContent = "";
 
 	if(blocked_site_list.length > 0){
 		// Hide no blocked sites message
@@ -40,7 +45,6 @@ function constructGUI(){
 		let bse_template = document.querySelector("#blocked-site-entry-template");
 
 		for(var i = 0; i < blocked_site_list.length; i++){
-			var bsl = document.querySelector("#blocked-site-list");
 			var bse = bse_template.content.cloneNode(true);
 
 			let bse_string = blocked_site_list[i];
