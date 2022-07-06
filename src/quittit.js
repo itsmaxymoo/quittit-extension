@@ -11,6 +11,9 @@ function loadBlockedSiteList(onload = function(){}){
 		if(Array.isArray(bsl)){
 			blocked_site_list = bsl;
 		}
+		else{
+			blocked_site_list = ["reddit.com"];
+		}
 
 		// Also block the www. variant of domains
 		var www_variants = []
