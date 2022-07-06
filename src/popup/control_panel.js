@@ -49,7 +49,7 @@ function constructGUI(){
 
 			let bse_string = blocked_site_list[i];
 
-			bse.querySelector("#bse-name").innerHTML = blocked_site_list[i];
+			bse.querySelector("#bse-name").textContent = blocked_site_list[i];
 			bse.querySelector("#bse-delete").onclick = function(){
 				del_site(bse_string);
 				constructGUI();
