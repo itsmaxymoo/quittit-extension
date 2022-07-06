@@ -92,6 +92,13 @@ window.onload = function(){
 		constructGUI();
 	};
 
+	add_bse_input.addEventListener("keypress", function(event){
+		if(event.key === "Enter"){
+			event.preventDefault();
+			add_bse_button.click();
+		}
+	});
+
 	add_bse_input.oninput = function(){
 		add_bse_input.value = add_bse_input.value.replace(
 			/[^A-Za-z0-9.-]/g, ""
