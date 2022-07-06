@@ -19,7 +19,7 @@ function load(onload = function(){}){
 			blocked_site_list = bsl;
 		}
 		else{
-			blocked_site_list = ["reddit.com"];
+			blocked_site_list = ["reddit.com", "old.reddit.com"];
 		}
 
 		console.log("quittit! extension settings loaded.");

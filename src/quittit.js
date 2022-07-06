@@ -12,7 +12,7 @@ function loadBlockedSiteList(onload = function(){}){
 			blocked_site_list = bsl;
 		}
 		else{
-			blocked_site_list = ["reddit.com"];
+			blocked_site_list = ["reddit.com", "old.reddit.com"];
 		}
 
 		// Also block the www. variant of domains
