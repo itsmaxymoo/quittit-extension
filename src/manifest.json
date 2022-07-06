@@ -6,6 +6,11 @@
   
 	"description": "Enforces the use of quittit!",
 	"homepage_url": "https://quittit.itsmaxymoo.com",
+
+	"developer": {
+		"name": "Max Loiacono",
+		"url": "https://itsmaxymoo.com"
+	},
   
 	"icons": {
 		"32": "assets/icon-32.png",
@@ -26,7 +31,8 @@
 	"content_scripts": [
 	  {
 		"matches": ["<all_urls>"],
-		"js": ["quittit.js"]
+		"js": ["quittit.js"],
+		"run_at": "document_start"
 	  }
 	]
   
