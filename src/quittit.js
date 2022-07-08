@@ -1,4 +1,6 @@
 const QUITTIT_URL = "https://quittit.itsmaxymoo.com";
+
+// To store list of blocked sites during runtime
 var blocked_site_list = [];
 
 
@@ -8,9 +10,12 @@ function loadBlockedSiteList(onload = function(){}){
 	storage.then(function(settings){
 		bsl = settings.blocked_site_list;
 
+		// If loaded data is not corrupt
 		if(Array.isArray(bsl)){
 			blocked_site_list = bsl;
 		}
+
+		// Else, set to default block list
 		else{
 			blocked_site_list = ["reddit.com", "old.reddit.com"];
 		}
