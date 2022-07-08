@@ -41,11 +41,9 @@ if(!browser.storage.onChanged.hasListener(loadBlockedSiteList)){
 
 
 // Add our event listener to catch page load
-window.onload = function(){
-	// Load blocked sites
-	loadBlockedSiteList(function(){
-		if(blocked_site_list.indexOf(location.hostname) > -1){
-			window.location = QUITTIT_URL;
-		}
-	});
-}
+// Load blocked sites
+loadBlockedSiteList(function(){
+	if(blocked_site_list.indexOf(location.hostname) > -1 && window.location.origin !== QUITTIT_URL){
+		window.location = QUITTIT_URL;
+	}
+});
