@@ -122,8 +122,8 @@ window.onload = function(){
 		}
 	});
 
-	// On keypress event, used to disallow invalid characters
-	add_bse_input.addEventListener("keypress", function(){
+	// Filter input events
+	add_bse_input.addEventListener("input", function(){
 		add_bse_input.value = add_bse_input.value.replace(
 			/[^A-Za-z0-9.-]/g, ""
 		);
