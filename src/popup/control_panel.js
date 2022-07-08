@@ -78,11 +78,32 @@ function constructGUI(){
 }
 
 
+// Function to inform the user their domain text box input is invalid
+function shakeTextBox(timeout = 200){
+	let button = document.querySelector("#add-bse-button");
+	let textbox = document.querySelector("#add-bse-input");
+
+	textbox.classList.add("is-danger");		// Make the textbox red
+	button.disabled = true;			// Disable add button
+
+	// Wait a moment
+	setTimeout(function(){
+		// Undo changes above
+		textbox.classList.remove("is-danger");
+		button.disabled = false;
+	}, timeout);
+}
+
+
 // Add a site to the block list and reload UI
 function add_site(site){
-	// Don't add a duplicate entry
-	if( ! blocked_site_list.includes(site) ){
-		blocked_site_list.unshift(site);
+	// Don't add a duplicate entry OR allow self-block
+	if( ! blocked_site_list.includes(site) && site !== "quittit.itsmaxymoo.com"){
+		blocked_site_list.unshift(site);	// Add entry to top
+	}
+	// Else, the user tried to input an existing site
+	else{
+		shakeTextBox(500);
 	}
 
 	save();				// save to disk
@@ -124,8 +145,17 @@ window.onload = function(){
 
 	// Filter input events
 	add_bse_input.addEventListener("input", function(){
+		let before_filter_value = add_bse_input.value;	// To compare with replaced text later
+
+		// Filter invalid characters
 		add_bse_input.value = add_bse_input.value.replace(
 			/[^A-Za-z0-9.-]/g, ""
 		);
+
+		// If there was a change made,
+		if(before_filter_value !== add_bse_input.value){
+			// Shake textbox
+			shakeTextBox();
+		}
 	});
 };
