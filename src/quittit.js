@@ -40,7 +40,6 @@ if(!browser.storage.onChanged.hasListener(loadBlockedSiteList)){
 }
 
 
-// Add our event listener to catch page load
 // Load blocked sites
 loadBlockedSiteList(function(){
 	if(blocked_site_list.indexOf(location.hostname) > -1 && window.location.origin !== QUITTIT_URL){
